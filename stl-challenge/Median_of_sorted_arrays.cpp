@@ -21,19 +21,22 @@ int main(){
 
    int n;
    cin>>n;
-   int a[n];
+   int a[n],b[n];
+   PBDS st;
    for(int i=0;i<n;i++){
     cin>>a[i];
+    st.insert(a[i]);
    }
 
-   PBDS st;
-   int inversion_count=0;
-   for(int i=0;i<n;i++){
-        inversion_count+=(st.size()-st.order_of_key(a[i]));
-        st.insert(a[i]);
+    for(int i=0;i<n;i++){
+       cin>>b[i];
+       st.insert(b[i]);  
    }
-   
-   cout<<inversion_count;
+   int ans=st.size()/2-1;
+
+   cout<<*st.find_by_order(ans)<<endl;
+
+
 
     return 0;
 }
